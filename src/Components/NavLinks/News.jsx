@@ -6,14 +6,14 @@ function News() {
   useEffect(() => {
       const fetchPost = async () => {
          const response = await fetch(
-          'https://newsapi.org/v2/everything?q=stockmarket&apiKey=675abaf9746748c399017b75b522fa1a'
+          'https://finnhub.io/api/v1/news?category=general&token=cremcchr01qnd5cvr330cremcchr01qnd5cvr33g'
          );
          const data = await response.json();
-         const feed = data.articles;
+        //  const feed = data.articles;
         //  console.log(data);
          
          
-         setPosts(feed);
+         setPosts(data);
       };
       fetchPost();
    }, []);
@@ -22,14 +22,14 @@ function News() {
     <>
     <div className='min-h-screen flex flex-wrap justify-around mb-5'>
       {posts?.map((value)=>(
-        <div key={value.url} className='flex justify-around mt-5 '>
+        <div key={value.id} className='flex justify-around mt-5 '>
         <Card 
         
-        imageUrl={value.urlToImage}   
+        imageUrl={value.image}   
       
-        title= {value.title?.slice(0,80)}
+        title= {value.headline?.slice(0,80)}
 
-        description = {value.content?.slice(0,200)}
+        description = {value.summary?.slice(0,200)}
 
         linkUrl = {value.url}
         />
@@ -41,6 +41,7 @@ function News() {
 }
 
 export default News
+
 
 
 

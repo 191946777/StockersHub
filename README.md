@@ -23,5 +23,7 @@ Technologies Used
 4) Alpha Vantage API: For fetching real-time stock market data, including price movements and company information.
 
 Installation
+
+
 ![Installation](https://github.com/user-attachments/assets/63fd5d49-7875-4da9-a998-797b8a1958f3)
 

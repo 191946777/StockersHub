@@ -91,7 +91,7 @@ function Chart() {
   return (
     <>
       <main >
-        <section className="search-section mt-4  flex items-center justify-between">
+        <section className="search-section mt-4  flex items-center justify-between flex-col gap-2 sm:flex-row  ">
           <div className="input-group flex items-center ">
             <form>
               <input
@@ -105,7 +105,7 @@ function Chart() {
           </div>
 
           {companyInfo && (
-            <div className="flex flex-wrap items-center justify-between text-center sm:gap-12 bg-white rounded-md border-2 pl-3 border-[#C8ACD6] pr-3 w-2/4">
+            <div className="flex flex-wrap items-center w-auto justify-between text-center sm:gap-12 sm:w-2/4 bg-white rounded-md border-2 pl-3 border-[#C8ACD6] pr-3 mt-3 ">
               <div>
                 <p className="text-sm font-medium text-gray-500">Open</p>
                 <p className="text-lg font-semibold text-gray-900">
@@ -140,7 +140,7 @@ function Chart() {
           )}
         </section>
 
-        <section className="mt-10">
+        <section className="mt-7">
           <div className="bg-white rounded-lg">
             <h3 className="font-medium text-3xl  ml-2 mt-5 pt-4 mr-2">
               Price Movement

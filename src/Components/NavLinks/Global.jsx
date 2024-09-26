@@ -92,8 +92,8 @@ function Global() {
                   key={gainer.ticker}
                   className="py-3 flex justify-between items-center gap-60"
                 >
-                  <span className="font-medium">{gainer.ticker}</span>
-                  <span className="text-green-500">
+                  <span className="font-medium text-xs sm:text-base">{gainer.ticker}</span>
+                  <span className="text-green-500 text-xs sm:text-base">
                     {gainer.change_percentage}
                   </span>
                 </li>
@@ -111,8 +111,8 @@ function Global() {
                   key={index}
                   className="py-3 flex justify-between items-center gap-60"
                 >
-                  <span className="font-medium">{loser.ticker}</span>
-                  <span className="text-red-500">
+                  <span className="font-medium text-xs sm:text-base">{loser.ticker}</span>
+                  <span className="text-red-500 text-xs sm:text-base">
                     {loser.change_percentage}
                   </span>
                 </li>
@@ -126,3 +126,4 @@ function Global() {
 }
 
 export default Global;
+

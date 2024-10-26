@@ -50,13 +50,15 @@ function Chart() {
       }
 
       const timeSeries = responseData1["Time Series (Daily)"];
+
+      const truncateToTwoDecimals = (number) => Math.trunc(number * 100) / 100;
       const mappedData = Object.keys(timeSeries).map((datetime) => ({
         x: new Date(datetime),
         y: [
-          parseFloat(timeSeries[datetime]["1. open"]),
-          parseFloat(timeSeries[datetime]["2. high"]),
-          parseFloat(timeSeries[datetime]["3. low"]),
-          parseFloat(timeSeries[datetime]["4. close"]),
+          truncateToTwoDecimals(parseFloat(timeSeries[datetime]["1. open"])),
+          truncateToTwoDecimals(parseFloat(timeSeries[datetime]["2. high"])),
+          truncateToTwoDecimals(parseFloat(timeSeries[datetime]["3. low"])),
+          truncateToTwoDecimals(parseFloat(timeSeries[datetime]["4. close"])),
         ],
       }));
 
@@ -69,7 +71,16 @@ function Chart() {
         ],
       }));
 
-      setCompanyInfo(responseData2["Global Quote"]);
+      const globalQuote = responseData2["Global Quote"];
+      setCompanyInfo({
+        open: truncateToTwoDecimals(parseFloat(globalQuote["02. open"])),
+        high: truncateToTwoDecimals(parseFloat(globalQuote["03. high"])),
+        low: truncateToTwoDecimals(parseFloat(globalQuote["04. low"])),
+        price: truncateToTwoDecimals(parseFloat(globalQuote["05. price"])),
+        changePercent: truncateToTwoDecimals(
+          parseFloat(globalQuote["10. change percent"])
+        ),
+      });
     } catch (error) {
       console.error("Error fetching or processing data:", error);
     }
@@ -90,12 +101,12 @@ function Chart() {
 
   return (
     <>
-      <main >
+      <main>
         <section className="search-section mt-4  flex items-center justify-between flex-col gap-2 sm:flex-row  ">
           <div className="input-group flex items-center ">
             <form>
               <input
-                className="input min-h-12 max-w-50 p-3 text-black border-[#C8ACD6] rounded-md border-2 "
+                className="input min-h-12 max-w-50 p-3 text-black border-[#C8ACD6] rounded-3xl border-2 outline-none "
                 type="text"
                 value={stock}
                 onChange={handleStockChange}
@@ -109,31 +120,31 @@ function Chart() {
               <div>
                 <p className="text-sm font-medium text-gray-500">Open</p>
                 <p className="text-lg font-semibold text-gray-900">
-                  {companyInfo["02. open"]}
+                  {companyInfo.open}
                 </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-green-500">High</p>
                 <p className="text-lg font-semibold text-gray-900">
-                  {companyInfo["03. high"]}
+                  {companyInfo.high}
                 </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-red-500">Low</p>
                 <p className="text-lg font-semibold text-gray-900">
-                  {companyInfo["04. low"]}
+                  {companyInfo.low}
                 </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">Price</p>
                 <p className="text-lg font-semibold text-gray-900">
-                  {companyInfo["05. price"]}
+                  {companyInfo.price}
                 </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">Change %</p>
                 <p className="text-lg font-semibold text-gray-900">
-                  {companyInfo["10. change percent"]}
+                  {companyInfo.changePercent}
                 </p>
               </div>
             </div>

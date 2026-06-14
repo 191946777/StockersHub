@@ -1,5 +1,4 @@
-Stockers Hub (stockers-hub.vercel.app
-)
+Stockers Hub (https://stockers-hub.vercel.app/)
 
 ![Home_Page](https://github.com/user-attachments/assets/85f9fa37-f27c-4d8b-bf90-80e92d116062)
 ![About_Page](https://github.com/user-attachments/assets/bf9d8fa2-8f3f-486a-84c3-cd91bafb3251)
